@@ -1,0 +1,61 @@
+{{template "base" .}}
+
+{{define "title"}}Home{{end}}
+
+{{define "styles"}}
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/post.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,900;1,100;1,200&display=swap" rel="stylesheet">
+{{end}}
+
+{{define "body"}}
+<div id="user_id" user-id={{.User.ID}} hidden></div>
+<div id="overlay"></div>
+    {{template "sign-up" .}}
+    {{template "sign-in" .}}
+    <div class="post-container">
+        {{range .Posts }}
+        <div class="post">
+            <div class="id" hidden>{{.ID}}</div>
+            <div class="author-id" author={{.User_ID}} hidden></div>
+            <div class="post-rating">
+                <div class="post-likes">
+                    <span class="likes">{{.Likes}}</span>
+                    <button class="post-likeBtn"  post-id={{.ID}} type="submit">{{template "like" .}}</button>
+                </div>
+                <div class="post-dislikes">
+                    <span class="dislikes">{{.Dislikes}}</span>
+                    <button class="post-dislikeBtn" post-id={{.ID}} type="submit">{{template "dislike" .}}</button>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="post-categories">
+                    {{range .Category}}
+                        <div class="post-category">{{.}}</div>
+                    {{end}} 
+                </div>
+                <div class="post-author">Posted by: {{.Author}} at {{.Created}}</div>
+                <div class="post-title text">{{ .Title }}</div>
+                <div class="post-text"><p class="text">{{.Content}}</p></div>
+                {{if .Updated}}
+                <div class="post-update">Last update: {{.Updated}}</div>
+                {{end}}
+                <div class="post-comments">
+                    <div class="comments">{{.Comments}}</div>
+                <a href="/post/?id={{.ID}}">{{template "comments" .}}</a>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/js/script.js"></script>
+<script src="/static/js/home.js"></script>
+<script src="/static/js/global.js"></script>
+{{end}}
