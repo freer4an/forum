@@ -1,3 +1,5 @@
+This project I cloned from my Gitea (student portfolio) so commits aren't saved.
+
 # Forum Project
 
 This project is a forum application built with Go and Docker. It provides a platform for users to create discussions, post comments, and interact with each other.
@@ -31,7 +33,3 @@ To run this project locally, make sure you have the following installed:
     ```console
     make stop
     ```
-## Authors
-freer,
-Creata21,
-MeirbekAshirbayev
