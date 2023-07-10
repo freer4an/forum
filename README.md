@@ -14,8 +14,8 @@ To run this project locally, make sure you have the following installed:
 
 1. Clone the repository:
 
-   ```shell
-   git clone <repository-url>
+   ```console
+   git clone https://github.com/freer4an/forum.git
    ```
 2. Navigate to the project directory:
     ```console
